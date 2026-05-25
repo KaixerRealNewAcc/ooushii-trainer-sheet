@@ -69,6 +69,11 @@
   margin-left: 5px;
   color: #999999;
 }
+.dexentry .perfectivbanner {
+  margin: 0 12px 8px;
+  color: #d8b85a;
+  font-size: 9pt;
+}
 .dexentry .tier {
   float: right;
   padding: 2px 4px;
@@ -363,6 +368,46 @@ table.evos .arrow abbr {
   margin-bottom: 30px;
 }
 
+/* Encounter rows in Pokemon -> Encounters tab need a wider tag for rate + level text. */
+.utilichart .encountertagcol {
+  width: 102px !important;
+  margin-right: 6px !important;
+  white-space: nowrap;
+}
+
+/* Detail encounter rows (location -> pokemon list) with percent + level tags. */
+.utilichart .encounterdetailtagcol {
+  width: 86px !important;
+  white-space: nowrap;
+}
+
+.utilichart .itemlocationtagcol {
+  width: 72px !important;
+  margin-right: 6px !important;
+  white-space: nowrap;
+}
+
+/* Keep row columns from crowding while preserving overall table widths. */
+.utilichart .pokemonnamecol,
+.utilichart .shortpokemonnamecol,
+.utilichart .abilitycol,
+.utilichart .twoabilitycol,
+.utilichart .typecol,
+.utilichart .tagcol {
+  box-sizing: border-box;
+}
+
+.utilichart .pokemonnamecol,
+.utilichart .shortpokemonnamecol {
+  padding-right: 5px;
+}
+
+.utilichart .abilitycol,
+.utilichart .twoabilitycol {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
 .type {
   display: inline-block;
   width: 60px;
@@ -593,4 +638,67 @@ a.subtle:hover {
 }
 .tabbar .button.nav-last {
   border-top-right-radius: 5px;
+}
+
+/* =======================
+   Dex theme overrides
+   ======================= */
+.theme-dex .pokedex h1 a {
+  color: #d7e0ec !important;
+}
+
+.theme-dex .dexentry h1 code,
+.theme-dex .dexentry dt,
+.theme-dex .dexentry .minor,
+.theme-dex .movetag small,
+.theme-dex table.stats .bst,
+.theme-dex table.stats .ministat,
+.theme-dex .utilichart .notfound em {
+  color: #9ab0d2 !important;
+}
+
+.theme-dex .dexentry p,
+.theme-dex .dexentry h2,
+.theme-dex .dexentry dd,
+.theme-dex .dexentry .tier,
+.theme-dex .dexentry dl.ppentry dd,
+.theme-dex .movetag,
+.theme-dex table.stats td,
+.theme-dex table.stats th {
+  color: #d7e0ec !important;
+}
+
+.theme-dex a.subtle {
+  color: #9ac0ff !important;
+}
+
+.theme-dex a.subtle:hover {
+  color: #c6dbff !important;
+}
+
+.theme-dex .utilichart a.active,
+.theme-dex .utilichart a.active:hover,
+.theme-dex .utilichart.nokbd a:hover {
+  border-color: #4b607f !important;
+  background: #111c2f !important;
+}
+
+.theme-dex .utilichart a.sel,
+.theme-dex .utilichart a.sel:hover,
+.theme-dex .utilichart a.cur,
+.theme-dex .utilichart a.cur:hover {
+  border-color: #6b86ae !important;
+  background: #1a2439 !important;
+}
+
+.theme-dex .tabbar:after {
+  background: #0f172a !important;
+  border-color: #445b79 !important;
+}
+
+.theme-dex .tabbar .button.cur,
+.theme-dex .tabbar .button.cur:hover {
+  color: #d7e0ec !important;
+  background: #0f172a !important;
+  border-color: #6b86ae !important;
 }

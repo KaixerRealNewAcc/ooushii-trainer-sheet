@@ -505,6 +505,11 @@ a.subtle:hover {
   color: #fff;
   border-color: #666;
 }
+.theme-dex .theme-picker select {
+  background: #111c2f;
+  color: #d7e0ec;
+  border-color: #445b79;
+}
 
 /* =======================
    Azure (Night Blue) theme
@@ -723,6 +728,173 @@ a.subtle:hover {
   color: #e8f0ff !important;
 }
 
+/* =======================
+   Dex theme
+   ======================= */
+.theme-dex {
+  background: #0b1320;
+  color: #d7e0ec;
+  --delta-positive: #7ee5a8;
+  --delta-negative: #ff9d9d;
+}
+
+.theme-dex .pfx-topbar {
+  background: linear-gradient(#1a2439, #121b2d) !important;
+  border-bottom: 1px solid #4b607f !important;
+  text-shadow: none !important;
+  color: #d7e0ec !important;
+}
+
+.theme-dex .pfx-topbar .userbar,
+.theme-dex .pfx-topbar .header {
+  color: #d7e0ec !important;
+}
+
+.theme-dex .pfx-panel,
+.theme-dex .pfx-body,
+.theme-dex .pfx-popup,
+.theme-dex .pfx-loading,
+.theme-dex .utilichart,
+.theme-dex .dexentry,
+.theme-dex .linklist a,
+.theme-dex .footer {
+  background: #0f172a !important;
+  border-color: #445b79 !important;
+  color: #d7e0ec !important;
+  text-shadow: none !important;
+}
+
+.theme-dex .searchbox,
+.theme-dex .textbox {
+  background: #111c2f !important;
+  border-color: #445b79 !important;
+  color: #d7e0ec !important;
+  box-shadow: none !important;
+}
+
+.theme-dex .searchbox::placeholder,
+.theme-dex .textbox::placeholder,
+.theme-dex .linklist a small,
+.theme-dex .minor,
+.theme-dex .bst,
+.theme-dex .dexentry .tier {
+  color: #9ab0d2 !important;
+}
+
+.theme-dex .searchbox:focus,
+.theme-dex .textbox:focus {
+  border-color: #7ba3d6 !important;
+  box-shadow: 0 0 0 2px rgba(123, 163, 214, 0.25) !important;
+}
+
+.theme-dex a,
+.theme-dex .pfx-topbar a,
+.theme-dex a.subtle,
+.theme-dex .utilichart a a,
+.theme-dex .dexentry a.subtle {
+  color: #9ac0ff !important;
+}
+
+.theme-dex a:hover,
+.theme-dex .pfx-topbar a:hover,
+.theme-dex a.subtle:hover,
+.theme-dex .utilichart a a:hover,
+.theme-dex .dexentry a.subtle:hover {
+  color: #c6dbff !important;
+}
+
+.theme-dex .button,
+.theme-dex .nav .button,
+.theme-dex .tabbar .button,
+.theme-dex .pfx-topbar .button,
+.theme-dex .pfx-body .button,
+.theme-dex .pfx-panel .button,
+.theme-dex .utilichart .button {
+  background: linear-gradient(#2a3953, #1f2d44) !important;
+  border-color: #4b607f !important;
+  color: #d7e0ec !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.theme-dex .button:hover,
+.theme-dex .nav .button:hover,
+.theme-dex .tabbar .button:hover,
+.theme-dex .pfx-topbar .button:hover,
+.theme-dex .pfx-body .button:hover,
+.theme-dex .pfx-panel .button:hover,
+.theme-dex .utilichart .button:hover {
+  background: linear-gradient(#334764, #253853) !important;
+  border-color: #6b86ae !important;
+  color: #d7e0ec !important;
+}
+
+.theme-dex .button.cur,
+.theme-dex .button.cur:hover,
+.theme-dex .button:disabled,
+.theme-dex .button:disabled:hover {
+  background: #253853 !important;
+  border-color: #6b86ae !important;
+  color: #9ab0d2 !important;
+}
+
+.theme-dex .utilichart a {
+  background: #0f172a !important;
+  border-color: #445b79 !important;
+  color: #d7e0ec !important;
+  text-shadow: none !important;
+}
+
+.theme-dex .utilichart a.active,
+.theme-dex .utilichart a.active:hover,
+.theme-dex .utilichart.nokbd a:hover {
+  background: #111c2f !important;
+  border-color: #4b607f !important;
+}
+
+.theme-dex .utilichart a.sel,
+.theme-dex .utilichart a.sel:hover,
+.theme-dex .utilichart a.cur,
+.theme-dex .utilichart a.cur:hover {
+  background: #1a2439 !important;
+  border-color: #6b86ae !important;
+}
+
+.theme-dex .utilichart .content .header,
+.theme-dex .utilichart .content .sort,
+.theme-dex .utilichart table thead th,
+.theme-dex .dexentry h2,
+.theme-dex .dexentry .movestitle,
+.theme-dex .utilichart h3,
+.theme-dex .utilichart dt {
+  background: #121b2d !important;
+  border-color: #4b607f !important;
+  color: #d7e0ec !important;
+}
+
+.theme-dex .utilichart a span,
+.theme-dex .utilichart a small {
+  color: #d7e0ec !important;
+}
+
+.theme-dex .warning {
+  color: #2f1a0e !important;
+}
+
+.theme-dex .warning a {
+  color: #5a2b12 !important;
+}
+
+.theme-dex .warning a:hover {
+  color: #7a3a18 !important;
+}
+
+.theme-dex .pfx-go-left,
+.theme-dex .pfx-go-right {
+  background: #0b1320 !important;
+  border-left-color: #445b79 !important;
+}
+
 /* ===== Brighter, crisper text for DARK (not Night/Azure) ===== */
 
 /* Base copy */
@@ -785,4 +957,196 @@ a.subtle:hover {
 .dark-mode .statbar span {
   /* no background/width/filter overrides here */
   box-shadow: inherit;                    /* preserve light-mode look */
+}
+
+/* Stat/move delta colors (theme-aware) */
+:root {
+  --delta-positive: #2aa84a;
+  --delta-negative: #cf3c3c;
+}
+
+.dark-mode,
+.theme-dark {
+  --delta-positive: #58d27e;
+  --delta-negative: #ff7b7b;
+}
+
+.theme-azure {
+  --delta-positive: #7ee5a8;
+  --delta-negative: #ff9d9d;
+}
+
+.delta-positive {
+  color: var(--delta-positive) !important;
+  font-weight: 600;
+}
+
+.delta-negative {
+  color: var(--delta-negative) !important;
+  font-weight: 600;
+}
+
+/* Ensure theme small-text overrides do not hide delta colors */
+.dexentry small.delta-positive,
+.dexentry .delta-positive {
+  color: var(--delta-positive) !important;
+}
+
+.dexentry small.delta-negative,
+.dexentry .delta-negative {
+  color: var(--delta-negative) !important;
+}
+
+.encounterlist-launch {
+  margin-top: 10px;
+}
+
+.encounterlist-panel {
+  padding-bottom: 18px;
+}
+
+.encounterlist-controls {
+  padding: 0 10px 10px 10px;
+}
+
+.encounterlist-note {
+  margin: 0 10px 10px 10px;
+  color: #666;
+  font-size: 10pt;
+}
+
+.encounterlist-dupe-count {
+  display: inline-block;
+  margin-left: 10px;
+  color: #666;
+  font-size: 10pt;
+}
+
+.encounterlist-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 8px 10px;
+}
+
+.encounterlist-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.encounterlist-route-link {
+  display: inline-block;
+  min-width: 185px;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.encounterlist-route-link:hover {
+  text-decoration: underline;
+}
+
+.encounterlist-route-link.encounterlist-route-active {
+  font-weight: 600;
+}
+
+.encounterlist-catch {
+  width: 180px;
+  cursor: default;
+}
+
+.encounterlist-picked-icon {
+  display: inline-block;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.encounterlist-picked-icon .picon {
+  vertical-align: top;
+}
+
+.encounterlist-row-dupe .encounterlist-catch {
+  border-color: #d77b7b !important;
+  background: #f6d1d1 !important;
+}
+
+.utilichart a.encounter-dupe,
+.utilichart a.encounter-dupe:hover {
+  border-color: #d77b7b !important;
+  background: #f6d1d1 !important;
+}
+
+.dark-mode .encounterlist-dupe-count,
+.dark-mode .encounterlist-note,
+.theme-dark .encounterlist-dupe-count,
+.theme-dark .encounterlist-note,
+.theme-azure .encounterlist-dupe-count,
+.theme-azure .encounterlist-note,
+.theme-dex .encounterlist-dupe-count,
+.theme-dex .encounterlist-note {
+  color: #c9d6f2 !important;
+}
+
+.dark-mode .encounterlist-row-dupe .encounterlist-catch,
+.theme-dark .encounterlist-row-dupe .encounterlist-catch,
+.theme-azure .encounterlist-row-dupe .encounterlist-catch,
+.theme-dex .encounterlist-row-dupe .encounterlist-catch {
+  border-color: #b65d5d !important;
+  background: #4a2727 !important;
+  color: #f6e3e3 !important;
+}
+
+.dark-mode .utilichart a.encounter-dupe,
+.dark-mode .utilichart a.encounter-dupe:hover,
+.theme-dark .utilichart a.encounter-dupe,
+.theme-dark .utilichart a.encounter-dupe:hover,
+.theme-azure .utilichart a.encounter-dupe,
+.theme-azure .utilichart a.encounter-dupe:hover,
+.theme-dex .utilichart a.encounter-dupe,
+.theme-dex .utilichart a.encounter-dupe:hover {
+  border-color: #b65d5d !important;
+  background: #4a2727 !important;
+}
+
+/* Night (Blue): make in-content action/filter buttons match Dark mode */
+.theme-azure .itemlocationfilterbar .button,
+.theme-azure .utilichart .button,
+.theme-azure .utilichart .label {
+  background: #2a2a2a !important;
+  color: #ffffff !important;
+  border: 1px solid #666 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.theme-azure .itemlocationfilterbar .button:hover,
+.theme-azure .utilichart .button:hover,
+.theme-azure .utilichart .label:hover {
+  background: #3a3a3a !important;
+  border-color: #999 !important;
+  color: #ffffff !important;
+}
+
+.theme-azure .itemlocationfilterbar .button.cur,
+.theme-azure .itemlocationfilterbar .button:disabled,
+.theme-azure .utilichart .button.cur,
+.theme-azure .utilichart .label.cur,
+.theme-azure .utilichart .button:disabled {
+  background: #3a3a3a !important;
+  color: #e6e6e6 !important;
+  border-color: #888 !important;
+}
+
+/* Keep all top links on one row on desktop (Github -> Google Drive). */
+@media all and (min-width: 900px) {
+  .pfx-topbar .header {
+    max-width: 780px;
+  }
 }

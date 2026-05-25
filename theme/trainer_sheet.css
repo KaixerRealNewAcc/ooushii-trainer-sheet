@@ -237,6 +237,80 @@ body {
   color: #ffffff;
 }
 
+/* ===============================
+   Trainer sheets - Dex
+   =============================== */
+.theme-dex body {
+  background: #0b1320;
+  color: #d7e0ec;
+}
+
+.theme-dex .location {
+  color: #d7e0ec;
+}
+
+.theme-dex .line {
+  background: #445b79;
+}
+
+.theme-dex .content-table {
+  box-shadow: none;
+}
+
+.theme-dex .caption-content {
+  background: #121b2d;
+  color: #d7e0ec;
+}
+
+.theme-dex .content-table th,
+.theme-dex .content-table td {
+  border-color: #445b79;
+}
+
+.theme-dex .content-table thead tr {
+  background: #121b2d;
+  color: #d7e0ec;
+}
+
+.theme-dex .content-table tbody tr {
+  background: #0f172a;
+  color: #d7e0ec;
+  border-bottom-color: #445b79;
+}
+
+.theme-dex .content-table tbody tr:nth-of-type(even) {
+  background: #111c2f;
+}
+
+.theme-dex .content-table tbody tr:last-of-type {
+  border-bottom-color: #6b86ae;
+}
+
+.theme-dex .resources {
+  background-color: #0f172a;
+  color: #d7e0ec;
+  border-top-color: #0f172a;
+  border-bottom-color: #0f172a;
+  border-left-color: #0f172a;
+  border-right-color: #0f172a;
+}
+
+.theme-dex .resources h1 {
+  color: #d7e0ec;
+}
+
+.theme-dex .navbar {
+  background: #121b2d;
+}
+
+.theme-dex .navbar a {
+  color: #9ac0ff;
+}
+
+.theme-dex .navbar a:hover {
+  color: #c6dbff;
+}
+
 .dynamic-tooltip {
   position: fixed !important; /* Ensure it's fixed to viewport */
   background: #2c3e50;
