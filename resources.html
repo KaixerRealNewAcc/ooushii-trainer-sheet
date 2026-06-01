@@ -123,7 +123,7 @@
         <h1>Route 101</h1>
         <p>
           <b>Land:</b> 20% Zigzagoon-Galar, 10% Aipom, 10% Fletchling, 10% Pikipek, 10% Phanpy,
-          10% Smoliv, 10% Stufful, 5% Ekans, 5% Pawmi, 5% Azurill 5% Cufant
+          10% Smoliv, 10% Stufful, 5% Ekans, 5% Pawmi, 5% Azurill, 5% Cufant
         </p>
       </div>
 
@@ -665,9 +665,371 @@
         10% Cetitan, 10% Bergmite, 5% Delibird, 5% Crabominable, 5% Sneasel, 5% Sneasel-Hisui</p>
         <p><b>Overworld Items:</b> TM Defog</p>
       </div>
+
+      <div class="resources">
+        <h1>Route 113</h1>
+        <p>
+          <b>Land:</b> 20% Grafaiai, 10% Scolipede, 10% Murkrow (Lv 5-50), 10% Cacnea,
+          10% Malamar, 10% Roselia, 10% Bisharp, 5% Glimmet, 5% Glimmora, 5% Sneasel, 4% Zorua, 1% Zoroark 
+        </p>
+        <p>
+        </p>
+        <p><b>Overworld Items:</b> Poison Gem, Dark Gem (Hidden), Toxic Orb, TM Thunder Wave</p>
+      </div>
+
 </body>
   <script>
+const INLINE_POKEMON_ICON_BASE = 'https://play.pokemonshowdown.com/sprites/gen5/';
+const INLINE_ITEM_ICON_BASE = 'https://play.pokemonshowdown.com/sprites/itemicons/';
+const INLINE_ITEM_ICON_ALT_BASE = 'https://img.pokemondb.net/sprites/items/';
+const INLINE_ITEM_ICON_FALLBACK = `${INLINE_ITEM_ICON_BASE}0.png`;
+const BARE_BERRY_ITEMS = new Set([
+  'aspear', 'cheri', 'chesto', 'chople', 'custap', 'jaboca', 'lansat', 'leppa',
+  'lum', 'micle', 'oran', 'pecha', 'persim', 'rawst', 'rindo',
+  'rowap', 'salac', 'sitrus',
+]);
+const STATIC_ITEM_ALIASES = {
+  'new encounter location': ['old-sea-map'],
+  'berry juices': ['berry-juice'],
+  'dive balls': ['dive-ball'],
+  'dusk balls': ['dusk-ball'],
+  'quick balls': ['quick-ball'],
+  'sitrus berries': ['sitrus-berry'],
+  'pearls': ['pearl'],
+  'revives': ['revive'],
+  'lure': ['lure-ball'],
+};
+const DIRECT_ITEM_ICON_URLS = {
+  'loaded dice': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Loaded_Dice_SV_Sprite.png',
+  'clear amulet': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Clear_Amulet_SV_Sprite.png',
+  'covert cloak': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Covert_Cloak_SV_Sprite.png',
+  'room service': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Room_Service_SV_Sprite.png',
+  'ability shield': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Ability_Shield_SV_Sprite.png',
+  'throat spray': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Throat_Spray_SV_Sprite.png',
+  'mirror herb': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Mirror_Herb_SV_Sprite.png',
+  'hyper candy': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Exp._Candy_XL_SV_Sprite.png',
+  'endless candy': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Rare_Candy_SV_Sprite.png',
+};
+const MACHINE_MOVE_TYPES = {
+  'attract': 'normal',
+  'breaking swipe': 'dragon',
+  'bulldoze': 'ground',
+  'defog': 'flying',
+  'electroweb': 'electric',
+  'facade': 'normal',
+  'flash': 'normal',
+  'focus punch': 'fighting',
+  'foul play': 'dark',
+  'hidden power': 'normal',
+  'hyper voice': 'normal',
+  'magical leaf': 'grass',
+  'rock smash': 'fighting',
+  'rock tomb': 'rock',
+  'self destruct': 'normal',
+  'smack down': 'rock',
+  'solar beam': 'grass',
+  'solar blade': 'grass',
+  'surf': 'water',
+  'swift': 'normal',
+  'torment': 'dark',
+  'whirlpool': 'water',
+};
+const MACHINE_ICON_TYPES = new Set([
+  'bug', 'dark', 'dragon', 'electric', 'fighting', 'fire', 'flying', 'ghost',
+  'grass', 'ground', 'ice', 'normal', 'poison', 'psychic', 'rock', 'steel', 'water',
+]);
+
+const RESOURCE_POKEMON_LABELS = [
+  'land',
+  'water',
+  'rod',
+  'rock smash',
+  'special',
+  'gift',
+  'batch',
+  'grotto',
+];
+
+const RESOURCE_ITEM_LABELS = [
+  'overworld items',
+  'npc items',
+  'gym leader rewards',
+  'delibird deliveries',
+  'berry trees',
+];
+
+function normalizeLabelText(labelText) {
+  return labelText.toLowerCase().replace(/\s+/g, ' ').trim().replace(/:$/, '');
+}
+
+function getResourceLineMode(labelText) {
+  const normalized = normalizeLabelText(labelText);
+  if (RESOURCE_POKEMON_LABELS.some((label) => normalized.startsWith(label))) {
+    return 'pokemon';
+  }
+  if (RESOURCE_ITEM_LABELS.some((label) => normalized.startsWith(label))) {
+    return 'item';
+  }
+  return null;
+}
+
+function splitByCommasOutsideParens(text) {
+  const segments = [];
+  let current = '';
+  let depth = 0;
+
+  for (const char of text) {
+    if (char === '(') depth += 1;
+    if (char === ')' && depth > 0) depth -= 1;
+
+    if (char === ',' && depth === 0) {
+      const segment = current.trim();
+      if (segment) segments.push(segment);
+      current = '';
+      continue;
+    }
+
+    current += char;
+  }
+
+  const tail = current.trim();
+  if (tail) segments.push(tail);
+  return segments;
+}
+
+function createFallbackImage(candidates, altText, cssClass) {
+  if (!candidates.length) return null;
+
+  const img = document.createElement('img');
+  img.className = cssClass;
+  img.alt = altText;
+  img.loading = 'lazy';
+
+  let index = 0;
+  img.src = candidates[index];
+  img.addEventListener('error', () => {
+    index += 1;
+    if (index < candidates.length) {
+      img.src = candidates[index];
+      return;
+    }
+    img.remove();
+  });
+
+  return img;
+}
+
+function toHyphenId(value) {
+  return value
+    .toLowerCase()
+    .replace(/[.'"]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function toCompactId(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function normalizeLookupKey(name) {
+  return name.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+function getMachineIconId(cleanName) {
+  const normalized = normalizeLookupKey(cleanName);
+
+  const tmMatch = normalized.match(/^(?:tm|tms|tr|trs)\s+(.+)$/i);
+  if (tmMatch) {
+    const moveName = tmMatch[1].trim();
+    const moveType = MACHINE_MOVE_TYPES[moveName];
+    if (moveType && MACHINE_ICON_TYPES.has(moveType)) return `tm-${moveType}`;
+    return 'tm-normal';
+  }
+
+  const hmMatch = normalized.match(/^hm\d*\s+(.+)$/i);
+  if (hmMatch) {
+    const moveName = hmMatch[1].trim();
+    const moveType = MACHINE_MOVE_TYPES[moveName];
+    if (moveType && MACHINE_ICON_TYPES.has(moveType)) return `hm-${moveType}`;
+    return 'hm-normal';
+  }
+
+  if (/^hm\d*\b/i.test(normalized)) return 'hm-normal';
+  return null;
+}
+
+function squashFormId(hyphenId) {
+  const parts = hyphenId.split('-').filter(Boolean);
+  if (parts.length < 3) return hyphenId;
+  return `${parts[0]}-${parts.slice(1).join('')}`;
+}
+
+function makeInlinePokemonIcon(name) {
+  const hyphenId = toHyphenId(name);
+  if (!hyphenId) return null;
+
+  const compactId = toCompactId(name);
+  const squashedId = squashFormId(hyphenId);
+  const candidates = [
+    `${INLINE_POKEMON_ICON_BASE}${hyphenId}.png`,
+    `${INLINE_POKEMON_ICON_BASE}${squashedId}.png`,
+    `${INLINE_POKEMON_ICON_BASE}${compactId}.png`,
+  ];
+
+  return createFallbackImage([...new Set(candidates)], `${name} sprite`, 'ts-inline-poke-sprite');
+}
+
+function makeInlineItemIcon(name) {
+  const cleanName = name
+    .replace(/^\s*[-.:]\s*/, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\.{3}.*/, '')
+    .replace(/\b(?:berry trees?|gym leader rewards?|npc items?|overworld items?|delibird deliveries?):.*$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const hyphenId = toHyphenId(cleanName);
+  if (!hyphenId) return null;
+
+  const compactId = toCompactId(cleanName);
+  const normalized = normalizeLookupKey(cleanName);
+  const idCandidates = [hyphenId, compactId];
+
+  const aliasIds = STATIC_ITEM_ALIASES[normalized];
+  if (aliasIds) idCandidates.push(...aliasIds);
+
+  const singularHyphen = hyphenId ? hyphenId.replace(/s$/, '') : '';
+  if (singularHyphen && singularHyphen !== hyphenId) idCandidates.push(singularHyphen);
+
+  if (BARE_BERRY_ITEMS.has(normalized)) {
+    idCandidates.push(`${hyphenId}-berry`);
+  }
+
+  const machineIconId = getMachineIconId(cleanName);
+  if (machineIconId) {
+    idCandidates.push(machineIconId);
+    if (machineIconId.startsWith('tm-')) idCandidates.push('tm-normal', 'tm-case');
+    if (machineIconId.startsWith('hm-')) idCandidates.push('hm-normal');
+  }
+  if (/ite$/i.test(cleanName)) {
+    idCandidates.push('eviolite');
+  }
+
+  const uniqueIds = [...new Set(idCandidates.filter(Boolean))];
+  const candidates = [];
+  const directIconUrl = DIRECT_ITEM_ICON_URLS[normalized];
+  if (directIconUrl) candidates.push(directIconUrl);
+  uniqueIds.forEach((id) => {
+    candidates.push(`${INLINE_ITEM_ICON_BASE}${id}.png`);
+    candidates.push(`${INLINE_ITEM_ICON_ALT_BASE}${id}.png`);
+  });
+  candidates.push(INLINE_ITEM_ICON_FALLBACK);
+
+  return createFallbackImage([...new Set(candidates)], `${name} icon`, 'ts-inline-item-sprite');
+}
+
+function parseSegmentParts(rawSegment) {
+  const trimmed = rawSegment.trim();
+  if (!trimmed) return null;
+
+  let prefix = '';
+  let remainder = trimmed;
+
+  const percentPrefix = remainder.match(/^(\d+%\s+)/);
+  if (percentPrefix) {
+    prefix = percentPrefix[1].trim();
+    remainder = remainder.slice(percentPrefix[1].length).trim();
+  }
+
+  const countPrefix = remainder.match(/^(\d+\s+)/);
+  if (!percentPrefix && countPrefix) {
+    prefix = countPrefix[1].trim();
+    remainder = remainder.slice(countPrefix[1].length).trim();
+  }
+
+  let suffix = '';
+  const suffixMatch = remainder.match(/(\s*\([^)]*\)\s*)$/);
+  if (suffixMatch) {
+    suffix = suffixMatch[1].trim();
+    remainder = remainder.slice(0, remainder.length - suffixMatch[1].length).trim();
+  }
+
+  if (!remainder) return null;
+  return {prefix, name: remainder, suffix};
+}
+
+function decorateResourceLine(line, mode) {
+  const labelNode = line.querySelector('b');
+  if (!labelNode) return;
+
+  const rawLabel = labelNode.textContent.trim();
+  const displayLabel = rawLabel.includes(':') ? `${rawLabel.split(':')[0].trim()}:` : rawLabel;
+  const fullText = line.textContent.trim();
+  const labelIndex = fullText.toLowerCase().indexOf(rawLabel.toLowerCase());
+  let bodyText = labelIndex >= 0 ? fullText.slice(labelIndex + rawLabel.length).trim() : '';
+
+  if (!bodyText && rawLabel.includes(':')) {
+    bodyText = rawLabel.slice(rawLabel.indexOf(':') + 1).trim();
+  }
+
+  if (!bodyText) return;
+
+  const segments = splitByCommasOutsideParens(bodyText);
+  if (!segments.length) return;
+
+  line.textContent = '';
+
+  const bold = document.createElement('b');
+  bold.textContent = displayLabel;
+  line.appendChild(bold);
+  line.appendChild(document.createTextNode(' '));
+
+  segments.forEach((segment, index) => {
+    const parsed = parseSegmentParts(segment);
+    if (!parsed) {
+      line.appendChild(document.createTextNode(segment));
+    } else {
+      const icon = mode === 'pokemon'
+        ? makeInlinePokemonIcon(parsed.name)
+        : makeInlineItemIcon(parsed.name);
+
+      if (!icon) {
+        line.appendChild(document.createTextNode(segment));
+      } else {
+        const wrapper = document.createElement('span');
+        wrapper.className = 'ts-inline-label';
+
+        if (parsed.prefix) {
+          wrapper.appendChild(document.createTextNode(`${parsed.prefix} `));
+        }
+        wrapper.appendChild(icon);
+
+        const trailing = parsed.suffix ? ` ${parsed.suffix}` : '';
+        wrapper.appendChild(document.createTextNode(`${parsed.name}${trailing}`));
+        line.appendChild(wrapper);
+      }
+    }
+
+    if (index < segments.length - 1) {
+      line.appendChild(document.createTextNode(', '));
+    }
+  });
+}
+
+function decorateResourceSprites() {
+  document.querySelectorAll('.resources p').forEach((line) => {
+    const labelNode = line.querySelector('b');
+    if (!labelNode) return;
+
+    const mode = getResourceLineMode(labelNode.textContent.trim());
+    if (!mode) return;
+
+    decorateResourceLine(line, mode);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  decorateResourceSprites();
+
   const select = document.getElementById('theme-select');
   const root = document.documentElement;
 
