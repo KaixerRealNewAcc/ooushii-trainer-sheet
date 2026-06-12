@@ -14,8 +14,13 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 100;
   background-color: #14191f;
+  --split-cap-menu-bg: #14191f;
+  --split-cap-menu-border: rgba(255, 203, 90, 0.35);
+  --split-cap-menu-text: #ffcb5a;
+  --split-cap-menu-muted: #c8c8d8;
 }
 
 /* Kill list bullets in navbar */
@@ -36,6 +41,7 @@ body {
 
 .navbar a {
   float: left;
+  display: block;
   color: #ffcb5a;
   text-align: center;
   padding: 14px 16px;
@@ -45,6 +51,48 @@ body {
 
 .navbar a:hover {
   color: #ddd;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar .split-cap-dropdown {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 260px;
+  padding: 8px 0;
+  border: 1px solid var(--split-cap-menu-border);
+  border-radius: 8px;
+  background: var(--split-cap-menu-bg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  z-index: 150;
+}
+
+.navbar .split-cap-dropdown span {
+  display: block;
+  padding: 6px 14px;
+  color: var(--split-cap-menu-text);
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.navbar li:hover > .split-cap-dropdown,
+.navbar li:focus-within > .split-cap-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.navbar .split-cap-dropdown.is-placeholder span {
+  color: var(--split-cap-menu-muted);
+  font-style: italic;
 }
 
 /* .navbar a.active {
@@ -212,6 +260,10 @@ body {
    =============================== */
 .dark-mode:not(.theme-azure) .navbar {
   background: #1e1e1e;
+  --split-cap-menu-bg: #1e1e1e;
+  --split-cap-menu-border: rgba(230, 236, 248, 0.22);
+  --split-cap-menu-text: #e6ecf8;
+  --split-cap-menu-muted: #b7c0cf;
 }
 
 .dark-mode:not(.theme-azure) .navbar a {
@@ -227,6 +279,10 @@ body {
    =============================== */
 .theme-azure .navbar {
   background: #0b1226;
+  --split-cap-menu-bg: #0b1226;
+  --split-cap-menu-border: rgba(158, 203, 255, 0.28);
+  --split-cap-menu-text: #9ecbff;
+  --split-cap-menu-muted: #d2e5ff;
 }
 
 .theme-azure .navbar a {
@@ -301,6 +357,10 @@ body {
 
 .theme-dex .navbar {
   background: #121b2d;
+  --split-cap-menu-bg: #121b2d;
+  --split-cap-menu-border: rgba(154, 192, 255, 0.28);
+  --split-cap-menu-text: #9ac0ff;
+  --split-cap-menu-muted: #d7e0ec;
 }
 
 .theme-dex .navbar a {
@@ -386,9 +446,52 @@ td {
   gap: 4px;
 }
 
+.ts-resource-line {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 12px;
+  align-items: start;
+}
+
+.ts-resource-label {
+  flex: none;
+}
+
+.ts-resource-line--pokemon .ts-resource-label {
+  line-height: 65px;
+}
+
+.ts-resource-line--item .ts-resource-label {
+  line-height: 22px;
+}
+
+.ts-resource-entries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  min-width: 0;
+}
+
+.ts-resource-entry {
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .ts-resource-line {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+
+  .ts-resource-line--pokemon .ts-resource-label,
+  .ts-resource-line--item .ts-resource-label {
+    line-height: normal;
+  }
+}
+
 .ts-inline-poke-sprite {
-  width: 65px;
-  height: 65px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   image-rendering: pixelated;
   flex: none;
