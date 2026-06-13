@@ -198,6 +198,57 @@ body {
   margin-left: 30px;
 }
 
+.resources .encounter-table-wrap {
+  margin: 12px 0 0 30px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.encounter-table {
+  margin: 0;
+  min-width: 680px;
+  width: 100%;
+}
+
+.encounter-table th,
+.encounter-table td {
+  min-width: 0;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.encounter-col-slot {
+  width: 56px;
+}
+
+.encounter-col-species {
+  min-width: 220px;
+  text-align: left;
+}
+
+.encounter-col-level,
+.encounter-col-rate {
+  min-width: 84px;
+}
+
+.encounter-col-chance {
+  min-width: 116px;
+}
+
+.encounter-species {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.encounter-sprite {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex: none;
+}
+
 /* === Trainer sheets: Dark mode === */
 .dark-mode body {
   background: #121212;
@@ -481,6 +532,10 @@ td {
   .ts-resource-line {
     grid-template-columns: 1fr;
     row-gap: 4px;
+  }
+
+  .resources .encounter-table-wrap {
+    margin-left: 0;
   }
 
   .ts-resource-line--pokemon .ts-resource-label,
