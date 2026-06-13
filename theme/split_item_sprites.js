@@ -21,7 +21,7 @@ const SPLIT_STATIC_ITEM_ALIASES = {
 };
 const SPLIT_DIRECT_ITEM_ICON_URLS = {
   'drampanite': 'https://archives.bulbagarden.net/media/upload/1/1e/Bag_Drampanite_ZA_Sprite.png',
-  'eject pack': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Eject_Pack_SV_Sprite.png',
+  'eject pack': 'https://archives.bulbagarden.net/media/upload/f/f1/Bag_Eject_Pack_SV_Sprite.png',
   'raichunite x': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Raichunite_X_ZA_Sprite.png',
   'raichunite y': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Raichunite_Y_ZA_Sprite.png',
   'pyroarite': 'https://archives.bulbagarden.net/wiki/Special:FilePath/Bag_Pyroarite_ZA_Sprite.png',
