@@ -301,7 +301,12 @@ function decorateSplitItemSprites() {
     const rows = table.querySelectorAll('tbody tr');
     if (rows.length < 4) return;
 
-    const itemRow = rows[3];
+    // Some generated tables contain an extra empty <tr> before the image row.
+    // Anchor on the species header row so item lookup stays aligned.
+    const speciesRowIndex = Array.from(rows).findIndex((row) => row.querySelector('th'));
+    const itemRow = speciesRowIndex >= 0 ? rows[speciesRowIndex + 2] : rows[3];
+    if (!itemRow) return;
+
     Array.from(itemRow.cells).forEach((cell) => {
       const itemName = cell.textContent.trim();
       if (!itemName || cell.querySelector('.ts-inline-item-sprite')) return;
