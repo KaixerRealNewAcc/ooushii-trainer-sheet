@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html><head>
+	<!-- Apply saved theme ASAP to avoid flash -->
+  <script>
+(() => {
+  const saved = localStorage.getItem('porydex-theme') || 'dark';
+  const root = document.documentElement;
+
+  root.classList.remove('dark-mode', 'theme-azure', 'theme-dex', 'theme-dark', 'theme-light');
+
+  if (saved === 'dark') {
+    root.classList.add('dark-mode');
+  } else if (saved === 'azure') {
+    root.classList.add('dark-mode', 'theme-azure');
+  } else if (saved === 'dex') {
+    root.classList.add('theme-dex');
+  }
+})();
+</script>
+
+	<meta charset="utf-8" />
+	<!--<link rel="icon" type="image/ico" href="images/favicon.ico">-->
+    <link rel="icon" type="image/gif" href="images/tepig.gif"  >
+	<title>Pok&eacute;dex - Pok&eacute;mon Showdown</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8" />
+	<link rel="stylesheet" href="https://play.pokemonshowdown.com/style/font-awesome.css" />
+	<link rel="stylesheet" href="theme/panels.css" />
+	<link rel="stylesheet" href="theme/main.css" />
+	<link rel="stylesheet" href="theme/trainer_sheet.css" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="https://play.pokemonshowdown.com/style/utilichart.css?b359" />
+	<link rel="stylesheet" href="theme/pokedex.css" />
+
+	<!-- Workarounds for IE bugs to display trees correctly. -->
+	<!--[if lte IE 6]><style> li.tree { height: 1px; } </style><![endif]-->
+	<!--[if IE 7]><style> li.tree { zoom: 1; } </style><![endif]-->
+
+</head><body>
+
+	<div class="pfx-topbar">
+		<div class="header">
+			<ul class="nav">
+				<li><a class="button nav-first" href="https://github.com/lhearachel/porydex"><img src="images/pokemonshowdownbeta.png" alt="Pokémon Showdown! (beta)" />Github</a></li>
+				<li><a class="button" href="https://astral-dex.vercel.app/">Pokédex</a></li>
+				<li><a class="button" href="https://astral-calc.vercel.app/">Calculator</a></li>
+				<li><a class="button" href="https://discord.gg/fZWBmEZeZx">Discord</a></li>
+        		<li><a class="button" href="https://drive.google.com/drive/folders/1X05r8shCeFDpyGCsSXXkryZ4Bt5pWd5B?usp=sharing">Google Drive</a></li>
+                <li><a class="button nav-last" href="astral-trainer-sheet.vercel.app">Trainer Sheet</a></li>
+                <div class="theme-picker">
+                <label for="theme-select">Theme</label>
+                <select id="theme-select">
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                  <option value="azure">Night (Blue)</option>
+                  <option value="dex">Dex</option>
+                </select>
+              </div>
+
+			</ul>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+    <div class="navbar">
+    <ul>
+        <li><a href="resources.html">Home</a></li>
+        <li>
+          <a href="roxanne-brock_split.html">Roxanne/Brock (20)</a>
+          <div class="split-cap-dropdown">
+            <span>Lady CindyLv. 16</span>
+          </div>
+        </li>
+        <li><a href="brawly_split.html">Brawly (25)</a></li>
+        <li><a href="norman_split.html">Norman (40)</a></li>
+        <li>
+          <a href="elesa_split.html">Elesa/Jasmine (50)</a>
+          <div class="split-cap-dropdown">
+            <span>Team Plasma N &amp; Ghetsis Lv. 46</span>
+          </div>
+        </li>
+        <li>
+          <a href="blaine_split.html">Flannery &amp; Blaine (62)</a>
+          <div class="split-cap-dropdown">
+            <span>Rival Lyra Lv. 55</span>
+            <span>Mt Chimney Maxie Lv. 61</span>
+          </div>
+        </li>
+        <li>
+          <a href="winona_split.html">Winona (73)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+        <li>
+          <a href="tate_and_liza_split.html">Tate &amp; Liza (90)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+        <li>
+          <a href="flannery_split.html">Crasher Wake &amp; Nessa (93)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+        <li>
+          <a href="elite_four_split.html">Elite Four (99)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+    </ul>
+</div>
+<div>
+<div class="container">
+<h1 class="location">Route 118 - Perma Rain</h1>
+<div class="line">
+</div>
+</div>
+
+<table class="content-table">
+<caption class="caption-content">Rival Steven - Perma Grassy Terrain & Terra Crit Rates</caption>
+<tbody>
+<tr> <!-- Images -->
+  <td><img src="https://play.pokemonshowdown.com/sprites/gen5/genesect-douse.png" alt=""></td>
+  <td><img src="https://play.pokemonshowdown.com/sprites/gen5/cradily.png" alt=""></td>
+  <td><img src="https://play.pokemonshowdown.com/sprites/gen5/metagross.png" alt=""></td>
+  <td><img src="https://play.pokemonshowdown.com/sprites/gen5/armaldo.png" alt=""></td>
+  <td><img src="https://play.pokemonshowdown.com/sprites/gen5/archaludon.png" alt=""></td>
+  <td><img src="https://play.pokemonshowdown.com/sprites/gen5/golisopod-mega.png" alt=""></td>
+</tr>
+<tr> <!-- Species -->
+  <th>Genesect-Douse</th>
+  <th>Cradily</th>
+  <th>Metagross</th>
+  <th>Armaldo</th>
+  <th>Archaludon</th>
+  <th>Golisopod-Mega</th>
+</tr>
+<tr> <!-- Level -->
+  <td>71</td>
+  <td>72</td>
+  <td>73</td>
+  <td>72</td>
+  <td>73</td>
+  <td>74</td>
+</tr>
+<tr> <!-- Item -->
+  <td>Douse Drive</td>
+  <td>Chople Berry</td>
+  <td>Leftovers</td>
+  <td>Scope Lens</td>
+  <td>Grassy Seed</td>
+  <td>Golisopite</td>
+</tr>
+<tr> <!-- Ability -->
+  <td>Download</td>
+  <td>Storm Drain</td>
+  <td>Clear Body</td>
+  <td>Swift Swim</td>
+  <td>Stamina</td>
+  <td>Bulletproof</td>
+</tr>
+<tr> <!-- Nature -->
+  <td>Hasty</td>
+  <td>Bold</td>
+  <td>Jolly</td>
+  <td>Jolly</td>
+  <td>Modest</td>
+  <td>Adamant</td>
+</tr>
+<tr> <!-- Move 1 -->
+  <td>Techno Blast</td>
+  <td>Cosmic Power</td>
+  <td>Meteor Mash</td>
+  <td>Aqua Cutter</td>
+  <td>Electro Shot</td>
+  <td>First Impression</td>
+</tr>
+<tr> <!-- Move 2 -->
+  <td>U-turn</td>
+  <td>Giga Drain</td>
+  <td>Knock Off</td>
+  <td>X-Scissor</td>
+  <td>Dragon Pulse</td>
+  <td>Aqua Jet</td>
+</tr>
+<tr> <!-- Move 3 -->
+  <td>Flash Cannon</td>
+  <td>Brine</td>
+  <td>Psychic Fangs</td>
+  <td>Leaf Blade</td>
+  <td>Flash Cannon</td>
+  <td>Iron Head</td>
+</tr>
+<tr> <!-- Move 4 -->
+  <td>Charge Beam</td>
+  <td>Recover</td>
+  <td>Pursuit</td>
+  <td>Aqua Jet</td>
+  <td>Body Press</td>
+  <td>Drill Run</td>
+</tr>
+</tbody>
+</table>
+
+
+<script src="theme/split_item_sprites.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('theme-select');
+  const root = document.documentElement;
+
+  if (!select) return;
+
+  // Sync dropdown with saved theme
+  const saved = localStorage.getItem('porydex-theme') || 'dark';
+  select.value = saved;
+
+  select.addEventListener('change', () => {
+    const theme = select.value;
+
+    root.classList.remove('dark-mode', 'theme-azure', 'theme-dex', 'theme-dark', 'theme-light');
+
+    if (theme === 'dark') {
+      root.classList.add('dark-mode');
+    } else if (theme === 'azure') {
+      root.classList.add('dark-mode', 'theme-azure');
+    } else if (theme === 'dex') {
+      root.classList.add('theme-dex');
+    }
+
+    localStorage.setItem('porydex-theme', theme);
+  });
+});
+</script>
+</html>
+
+
+
+
