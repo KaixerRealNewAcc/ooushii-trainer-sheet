@@ -605,7 +605,7 @@
         <p><b>Rod:</b> 20% Gulpin, 20% Swalot, 10% Shellos, 10% Shellos, 10% Toxicroak, 10% Muk-Alola,
         10% Toxtricity, 5% Dragalge, 4% Venipede, 1% Weedle</p>
         <p><b>Berry Trees:</b> 2 Jaboca, 2 Rowap, 2 Micle, 1 Rindo</p>
-        <p><b>Overworld Items:</b> Chimechite, TM Electroweb</p>
+        <p><b>Overworld Items:</b> Chimechoite, TM Electroweb</p>
       </div>
 
       <div class="resources">
@@ -689,7 +689,7 @@
         10% Araquanid, 5% Floatzel</p>
         <p><b>Overworld Items:</b>Heart Scale, TM Swift, Ultra Ball</p>
         <p><b>NPC Items:</b> Misty Seed</p>
-        <p><b>Delibird Delivery:</b> 1 Serious Mint, 1 Arenaline Orb, 1 Scrafinite, 10 Ultra Balls, 10 Quick Balls, Leek, Thick Club</p>
+        <p><b>Delibird Delivery:</b> 1 Serious Mint, 1 Adrenaline Orb, 1 Scraftinite, 10 Ultra Balls, 10 Quick Balls, Leek, Thick Club</p>
       </div>
 
             <div class="resources">
@@ -762,7 +762,7 @@
         <p><b>Rod:</b> 20% Kingler, 20% Cloyster, 10% Tentacruel, 10% Drednaw, 10% Azumarill, 10% Golduck,
         10% Remoraid, 5% Octillery, 4% Gastrodon, 1% Gastrodon</p>
         <p><b>NPC Items:</b> TM Dragon Tail</p>
-        <p><b>Overworld Items:</b> TM High Horsepower, Rare Candy (Requires Waterfall), Raichunite X & Y, Clefablite, Go Goggles</p>  
+        <p><b>Overworld Items:</b> TM High Horsepower, Rare Candy (Requires Waterfall), Raichunite X, Raichunite Y, Clefablite, Go Goggles</p>
         <p><b>Berry Trees:</b> 32 Persim, 32 Aspear, 1 Occa</p>
       </div>
 
@@ -934,6 +934,7 @@ const RESOURCE_ITEM_LABELS = [
   'npc items',
   'gym leader rewards',
   'delibird deliveries',
+  'delibird delivery',
   'berry trees',
 ];
 
@@ -1047,7 +1048,13 @@ function getBerryIconUrl(normalizedName) {
 function getDirectItemIconUrl(normalizedName) {
   return DIRECT_ITEM_ICON_URLS[normalizedName]
     || getMintIconUrl(normalizedName)
-    || getBerryIconUrl(normalizedName);
+    || getBerryIconUrl(normalizedName)
+    || getMegaStoneIconUrl(normalizedName);
+}
+
+function getMegaStoneIconUrl(normalizedName) {
+  if (!/ite(?: [xyz])?$/.test(normalizedName)) return null;
+  return `${ITEM_BULBAGARDEN_FILE_BASE}Bag_${toTitleFileToken(normalizedName)}_ZA_Sprite.png`;
 }
 
 function getMachineIconId(cleanName) {

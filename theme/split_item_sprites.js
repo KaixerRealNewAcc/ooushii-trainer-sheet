@@ -199,7 +199,13 @@ function getSplitBerryIconUrl(normalizedName) {
 function getSplitDirectItemIconUrl(normalizedName) {
   return SPLIT_DIRECT_ITEM_ICON_URLS[normalizedName]
     || getSplitMintIconUrl(normalizedName)
-    || getSplitBerryIconUrl(normalizedName);
+    || getSplitBerryIconUrl(normalizedName)
+    || getSplitMegaStoneIconUrl(normalizedName);
+}
+
+function getSplitMegaStoneIconUrl(normalizedName) {
+  if (!/ite(?: [xyz])?$/.test(normalizedName)) return null;
+  return `${SPLIT_ITEM_BULBAGARDEN_FILE_BASE}Bag_${toSplitTitleFileToken(normalizedName)}_ZA_Sprite.png`;
 }
 
 function getSplitMachineIconId(cleanName) {

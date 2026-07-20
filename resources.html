@@ -620,7 +620,7 @@
         <p><b>Rod:</b> 20% Gulpin, 20% Swalot, 10% Shellos, 10% Shellos, 10% Toxicroak, 10% Muk-Alola,
         10% Toxtricity, 5% Dragalge, 4% Venipede, 1% Weedle</p>
         <p><b>Berry Trees:</b> 2 Jaboca, 2 Rowap, 2 Micle, 1 Rindo</p>
-        <p><b>Overworld Items:</b> Chimechite, TM Electroweb</p>
+        <p><b>Overworld Items:</b> Chimechoite, TM Electroweb</p>
       </div>
 
       <div class="resources">
@@ -698,7 +698,7 @@
         10% Araquanid, 5% Floatzel</p>
         <p><b>Overworld Items:</b>Heart Scale, TM Swift, Ultra Ball</p>
         <p><b>NPC Items:</b> Misty Seed</p>
-        <p><b>Delibird Delivery:</b> 1 Serious Mint, 1 Arenaline Orb, 1 Scrafinite, 10 Ultra Balls, 10 Quick Balls, Leek, Thick Club</p>
+        <p><b>Delibird Delivery:</b> 1 Serious Mint, 1 Adrenaline Orb, 1 Scraftinite, 10 Ultra Balls, 10 Quick Balls, Leek, Thick Club</p>
       </div>
 
             <div class="resources">
@@ -1059,6 +1059,7 @@ const RESOURCE_ITEM_LABELS = [
   'npc items',
   'gym leader rewards',
   'delibird deliveries',
+  'delibird delivery',
   'berry trees',
 ];
 
@@ -1172,7 +1173,13 @@ function getBerryIconUrl(normalizedName) {
 function getDirectItemIconUrl(normalizedName) {
   return DIRECT_ITEM_ICON_URLS[normalizedName]
     || getMintIconUrl(normalizedName)
-    || getBerryIconUrl(normalizedName);
+    || getBerryIconUrl(normalizedName)
+    || getMegaStoneIconUrl(normalizedName);
+}
+
+function getMegaStoneIconUrl(normalizedName) {
+  if (!/ite(?: [xyz])?$/.test(normalizedName)) return null;
+  return `${ITEM_BULBAGARDEN_FILE_BASE}Bag_${toTitleFileToken(normalizedName)}_ZA_Sprite.png`;
 }
 
 function getMachineIconId(cleanName) {
