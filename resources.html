@@ -1177,6 +1177,12 @@ function getDirectItemIconUrl(normalizedName) {
     || getMegaStoneIconUrl(normalizedName);
 }
 
+function getLocalItemIconUrl(directIconUrl) {
+  if (!directIconUrl) return null;
+  const fileMatch = directIconUrl.match(/\/([^/?#]+\.png)(?:[?#]|$)/i);
+  return fileMatch ? `images/item-sprites/${decodeURIComponent(fileMatch[1])}` : null;
+}
+
 function getMegaStoneIconUrl(normalizedName) {
   if (!/ite(?: [xyz])?$/.test(normalizedName)) return null;
   return `${ITEM_BULBAGARDEN_FILE_BASE}Bag_${toTitleFileToken(normalizedName)}_ZA_Sprite.png`;
@@ -1265,6 +1271,8 @@ function makeInlineItemIcon(name) {
   const uniqueIds = [...new Set(idCandidates.filter(Boolean))];
   const candidates = [];
   const directIconUrl = getDirectItemIconUrl(normalized);
+  const localIconUrl = getLocalItemIconUrl(directIconUrl);
+  if (localIconUrl) candidates.push(localIconUrl);
   if (directIconUrl) candidates.push(directIconUrl);
   uniqueIds.forEach((id) => {
     candidates.push(`${INLINE_ITEM_ICON_BASE}${id}.png`);

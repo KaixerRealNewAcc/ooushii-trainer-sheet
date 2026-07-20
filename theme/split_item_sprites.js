@@ -203,6 +203,12 @@ function getSplitDirectItemIconUrl(normalizedName) {
     || getSplitMegaStoneIconUrl(normalizedName);
 }
 
+function getSplitLocalItemIconUrl(directIconUrl) {
+  if (!directIconUrl) return null;
+  const fileMatch = directIconUrl.match(/\/([^/?#]+\.png)(?:[?#]|$)/i);
+  return fileMatch ? `images/item-sprites/${decodeURIComponent(fileMatch[1])}` : null;
+}
+
 function getSplitMegaStoneIconUrl(normalizedName) {
   if (!/ite(?: [xyz])?$/.test(normalizedName)) return null;
   return `${SPLIT_ITEM_BULBAGARDEN_FILE_BASE}Bag_${toSplitTitleFileToken(normalizedName)}_ZA_Sprite.png`;
@@ -290,6 +296,8 @@ function makeSplitItemIcon(itemText) {
   const uniqueIds = [...new Set(idCandidates.filter(Boolean))];
   const candidates = [];
   const directIconUrl = getSplitDirectItemIconUrl(normalized);
+  const localIconUrl = getSplitLocalItemIconUrl(directIconUrl);
+  if (localIconUrl) candidates.push(localIconUrl);
   if (directIconUrl) candidates.push(directIconUrl);
   uniqueIds.forEach((id) => {
     candidates.push(`${INLINE_SPLIT_ITEM_ICON_BASE}${id}.png`);
