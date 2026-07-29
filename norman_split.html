@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html><head>
+	<!-- Apply saved theme ASAP to avoid flash -->
+  <script>
+(() => {
+  const saved = localStorage.getItem('porydex-theme') || 'dark';
+  const root = document.documentElement;
+
+  root.classList.remove('dark-mode', 'theme-azure', 'theme-dex', 'theme-dark', 'theme-light');
+
+  if (saved === 'dark') {
+    root.classList.add('dark-mode');
+  } else if (saved === 'azure') {
+    root.classList.add('dark-mode', 'theme-azure');
+  } else if (saved === 'dex') {
+    root.classList.add('theme-dex');
+  }
+})();
+</script>
+
+	<meta charset="utf-8" />
+	<!--<link rel="icon" type="image/ico" href="images/favicon.ico">-->
+    <link rel="icon" type="image/gif" href="images/tepig.gif"  >
+	<title>Pok&eacute;dex - Pok&eacute;mon Showdown</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8" />
+	<link rel="stylesheet" href="https://play.pokemonshowdown.com/style/font-awesome.css" />
+	<link rel="stylesheet" href="theme/panels.css" />
+	<link rel="stylesheet" href="theme/main.css" />
+	<link rel="stylesheet" href="theme/trainer_sheet.css" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="https://play.pokemonshowdown.com/style/utilichart.css?b359" />
+	<link rel="stylesheet" href="theme/pokedex.css" />
+
+	<!-- Workarounds for IE bugs to display trees correctly. -->
+	<!--[if lte IE 6]><style> li.tree { height: 1px; } </style><![endif]-->
+	<!--[if IE 7]><style> li.tree { zoom: 1; } </style><![endif]-->
+
+</head><body>
+    <div class="navbar">
+    <ul>
+        <li><a href="resources.html">Home</a></li>
+        <li>
+          <a href="roxanne_split.html">Roxanne (18)</a>
+          <div class="split-cap-dropdown">
+            <span>Aqua Grunt Petalburg Woods Lv. 13</span>
+          </div>
+        </li>
+        <li><a href="brawly_split.html">Brawly (27)</a>
+          <div class="split-cap-dropdown">
+            <span>Slateport Museum Lv. 24</span>
+          </div>
+        </li>
+        <li><a href="norman_split.html">Norman (42)</a>
+          <div class="split-cap-dropdown">
+            <span>Not Implemented</span>
+          </div>
+        </li>
+        <li><a href="wattson_split.html">Wattson (51)</a>
+          <div class="split-cap-dropdown">
+            <span>Not Implemented</span>
+          </div>
+        </li>
+        <li><a href="flannery_split.html">Flannery()</a>
+          <div class="split-cap-dropdown">
+            <span>Not Implemented</span>
+          </div>
+        </li>
+        <li>
+          <a href="winona_split.html">Winona (76)</a>
+          <div class="split-cap-dropdown">
+            <span>Sinnoh Leader Candice Lv. 73</span>
+            <span>Elite Four Lorelei Lv. 74</span>
+            <span>Team Plasma Colress Lv. 75</span>
+          </div>
+        </li>
+        <li>
+          <a href="tate_and_liza_split.html">Tate &amp; Liza (90)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+        <li>
+          <a href="flannery_split.html">Crasher Wake &amp; Nessa (93)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+        <li>
+          <a href="elite_four_split.html">Elite Four (99)</a>
+          <div class="split-cap-dropdown is-placeholder">
+            <span>No extra cap listed yet</span>
+          </div>
+        </li>
+    </ul>
+</div>
+<div>
+<div class="container">
+<h1 class="location">Route 102</h1>
+<div class="line">
+</div>
+</div>
+<table class="content-table">
+<caption class="caption-content">Leader Norman - Level cap is 51 when beaten -</caption>
+<tbody>
+<tr> <!-- Images -->
+  <td><img src="https://raw.githubusercontent.com/darkbooker/RadicalRedSprites/main/Sprites/URSALUNA.png" alt=""></td>
+  <td><img src="https://raw.githubusercontent.com/darkbooker/RadicalRedSprites/main/Sprites/MAROWAK_A.png" alt=""></td>
+  <td><img src="https://raw.githubusercontent.com/darkbooker/RadicalRedSprites/main/Sprites/AZUMARILL.png" alt=""></td>
+  <td><img src="https://raw.githubusercontent.com/darkbooker/RadicalRedSprites/main/Sprites/AMBIPOM.png" alt=""></td>
+  <td><img src="https://raw.githubusercontent.com/darkbooker/RadicalRedSprites/main/Sprites/TERAPAGOS.png" alt=""></td>
+  <td><img src="https://raw.githubusercontent.com/darkbooker/RadicalRedSprites/main/Sprites/STARAPTOR_MEGA.png" alt=""></td>
+</tr>
+
+<tr> <!-- Species -->
+  <th>Ursaluna</th>
+  <th>Marowak</th>
+  <th>Azumarill</th>
+  <th>Ambipom</th>
+  <th>Terapagos</th>
+  <th>Mega Staraptor</th>
+</tr>
+
+<!-- Type
+<tr>
+  <td>Fighting</td>
+  <td>Rock/Dark</td>
+  <td>Fire/Fighting</td>
+  <td>Water/Fighting</td>
+  <td>Fighting</td>
+  <td>Poison/Fighting</td>
+</tr>-->
+
+<tr> <!-- Level -->
+  <td>27</td>
+  <td>26</td>
+  <td>25</td>
+  <td>25</td>
+  <td>27</td>
+  <td>26</td>
+</tr>
+
+<tr> <!-- Item -->
+  <td>Life Orb</td>
+  <td>Protective Pads</td>
+  <td>Grip Claw</td>
+  <td>Mystic Water</td>
+  <td>Punching Glove</td>
+  <td>Payapa Berry</td>
+</tr>
+
+<tr> <!-- Ability -->
+  <td>Inner Focus</td>
+  <td>Dark Aura</td>
+  <td>Blaze</td>
+  <td>Intimidate</td>
+  <td>Technician</td>
+  <td>Poison Touch</td>
+</tr>
+
+<tr> <!-- Nature -->
+  <td>Jolly</td>
+  <td>Jolly</td>
+  <td>Mild</td>
+  <td>Jolly</td>
+  <td>Adamant</td>
+  <td>Timid</td>
+</tr>
+
+<tr> <!-- Move 1 -->
+  <td>Rock Slide</td>
+  <td>Accelerock</td>
+  <td>Lava Plume</td>
+  <td>Aqua Jet</td>
+  <td>Brick Break</td>
+  <td>Dark Pulse</td>
+</tr>
+
+<tr> <!-- Move 2 -->
+  <td>Brick Break</td>
+  <td>Pursuit</td>
+  <td>Aura Sphere</td>
+  <td>Brick Break</td>
+  <td>Rock Slide</td>
+  <td>Aura Sphere</td>
+</tr>
+
+<tr> <!-- Move 3 -->
+  <td>Zen Headbutt</td>
+  <td>Stomping Tantrum</td>
+  <td>Thunder Punch</td>
+  <td>Smart Strike</td>
+  <td>Pursuit</td>
+  <td>Sludge Bomb</td>
+</tr>
+
+<tr> <!-- Move 4 -->
+  <td>Throat Chop</td>
+  <td>Ice Fang</td>
+  <td>Fire Spin</td>
+  <td>Throat Chop</td>
+  <td>Bullet Punch</td>
+  <td>Blech</td>
+</tr>
+</tbody>
+</table>
+</table>
+</body>
+</body>
+<script src="theme/split_item_sprites.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('theme-select');
+  const root = document.documentElement;
+
+  if (!select) return;
+
+  // Sync dropdown with saved theme
+  const saved = localStorage.getItem('porydex-theme') || 'dark';
+  select.value = saved;
+
+  select.addEventListener('change', () => {
+    const theme = select.value;
+
+    root.classList.remove('dark-mode', 'theme-azure', 'theme-dex', 'theme-dark', 'theme-light');
+
+    if (theme === 'dark') {
+      root.classList.add('dark-mode');
+    } else if (theme === 'azure') {
+      root.classList.add('dark-mode', 'theme-azure');
+    } else if (theme === 'dex') {
+      root.classList.add('theme-dex');
+    }
+
+    localStorage.setItem('porydex-theme', theme);
+  });
+});
+</script>
+</html>
