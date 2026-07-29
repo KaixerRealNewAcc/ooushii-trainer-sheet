@@ -559,3 +559,11 @@ td {
   image-rendering: pixelated;
   flex: none;
 }
+
+.ts-inline-trainer-sprite {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex: none;
+}

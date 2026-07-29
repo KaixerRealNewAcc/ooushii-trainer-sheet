@@ -86,6 +86,9 @@ const SPLIT_DIRECT_ITEM_ICON_URLS = {
 'leek': 'https://archives.bulbagarden.net/media/upload/8/89/Bag_Leek_ZA_Sprite.png',
 
 };
+const SPLIT_DIRECT_TRAINER_ICON_URLS = {
+'Youngster': "https://play.pokemonshowdown.com/sprites/trainers/youngster-gen3.png",
+};
 const SPLIT_MINT_ICON_FILES = {
   'adamant': 'Bag_Mint_Attack_SV_Sprite.png',
   'bold': 'Bag_Mint_Defense_SV_Sprite.png',
@@ -194,6 +197,10 @@ function getSplitBerryIconUrl(normalizedName) {
   if (!berryStem) return null;
 
   return `${SPLIT_ITEM_BULBAGARDEN_FILE_BASE}Bag_${toSplitTitleFileToken(berryStem)}_Berry_SV_Sprite.png`;
+}
+
+function getSplitDirectTrainerIconUrl(normalizedName) {
+  return SPLIT_DIRECT_TRAINER_ICON_URLS[normalizedName];
 }
 
 function getSplitDirectItemIconUrl(normalizedName) {
