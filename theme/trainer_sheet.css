@@ -158,7 +158,6 @@ body {
 
 .content-table th,
 .content-table td {
-  border: 1px solid #000;
   min-width: 130px;
   padding: 3px 15px;
   text-align: center;
